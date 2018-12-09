@@ -6,7 +6,12 @@
 	@include('components.style')
 @endsection
 @section('content')
-	<table class="table table-striped">
+		<div class="container my-5">
+			<h1 class="display-4">자유게시판</h1>
+			<p class="lead">마카롱에 관련된 내용을 자유롭게 공유해 주세요.</p>
+		</div>
+	<table class="table mx-auto w-75">
+		<thead class="thead-light">
 		<tr>
 			<th>　</th>
 			<th>제목</th>
@@ -14,6 +19,7 @@
 			<th>작성일</th>
 			<th>조회수</th>
 		</tr>
+		</thead>
 		@foreach($msgs as $msg)
 			<tr>
 				<td>{{$msg->id}}</td>
@@ -32,6 +38,10 @@
 			</tr>
 		@endforeach
 	</table>
+		<div class="mx-auto" style="width: 1%">
+			{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}
+		</div>
+
 	<div class="form-row">
 		<select class="custom-select col-1" id="inputState" name="state">
 			<option value="title">제목</option>
@@ -44,7 +54,7 @@
 	</div>
 
 	<input type="button" value="글쓰기" onclick="location.href='{{route('board.create')}}'" class="btn btn-danger">
-	{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}
+
 @endsection
 @section('js')
 	<script>

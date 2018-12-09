@@ -10,11 +10,16 @@
 
 @endsection
 @section('content')
+	<div class="container my-5">
+		<h1 class="display-4">글 수정</h1>
+	</div>
+
 	<form action="{{route('board.update', ['board'=>$board->id, 'page'=>$page])}}" method="post">
 		@csrf
 		@Method('PATCH')
+        <div class="w-75 mx-auto">
 		<div class="form-group">
-			<label for="title">제목:</label>
+			<label for="title">제목</label>
 			<input type="text" class="form-control" id="title" name="title"  value="{{$board->title}}">
 			<span>
 				@if($errors->has('title'))
@@ -33,7 +38,11 @@
 				@endif
 			</span>
 		</div>
-		<button class="btn btn-primary">수정하기</button>
+	</div>
+    <div class="mb-4 row justify-content-center">
+        <button class="btn btn-primary ">수정하기</button>
+    </div>
+
 
 	</form>
 @endsection

@@ -6,6 +6,9 @@
 	@include('components.style')
 @endsection
 @section('content')
+	<div class="container my-5">
+		<h1 class="display-4">게시글 보기</h1>
+	</div>
 	<table class="table mx-auto w-75">
 		<tr>
 			<td>제목</td>
@@ -43,18 +46,15 @@
 			</td>
 		</tr>
 	</table>
-
-	<hr>
-
 	<div class="row justify-content-center">
-		<button class="btn btn-primary"
+		<button class="btn btn-primary mx-1"
 				onclick='location.href="{{route('board.index', ['page'=>$page])}}"'>목록보기</button>
 		@if(Auth::user()->id == $board->user_id)
-		<button class="btn btn-warning" onclick="location.href='{{route('board.edit', ['board'=>$board->id, 'page'=>$page])}}'">수정</button>
+		<button class="btn btn-warning mx-1" onclick="location.href='{{route('board.edit', ['board'=>$board->id, 'page'=>$page])}}'">수정</button>
 		<form action="{{route('board.destroy',['board'=>$board->id,'page'=>$page])}}" method="post">
 			@method('delete')
 			@csrf
-			<button class="btn btn-danger" type="submit">삭제</button>
+			<button class="btn btn-danger mx-1" type="submit">삭제</button>
 		</form>
 		@endif
 	</div>

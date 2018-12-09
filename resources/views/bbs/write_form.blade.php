@@ -10,12 +10,13 @@
 @endsection
 @section('content')
     <div class="container">
-        <h2>새 글쓰기 폼</h2>
-        <p>아래의 모든 필드를 채워주세요.</p>
+        <div class="container my-5">
+            <h1 class="display-4">새 글 쓰기</h1>
+        </div>
         <form id="store" action="{{route('board.store')}}" method="post">
             @csrf
             <div class="form-group">
-                <label for="title">제목:</label>
+                <label for="title">제목</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}"
                        required>
                 <div>
@@ -27,13 +28,8 @@
                 </div>
             </div>
 
-            <!--div class="form-group">
-              <label for="writer">작성자:</label>
-              <input type="text" class="form-control" id="writer" name="writer"
-              required>
-            </div-->
             <div class="form-group">
-                <label for="content">내용:</label>
+                <label for="content">내용</label>
                 <textarea name="content" id="editor1"  cols="80" class="form-control" required>{{old('content')}}</textarea>
 
                 <div>
@@ -54,11 +50,11 @@
     </div>
 
 
-    <div style="margin:10px 0 50px 0" >
-        <button type="button" class="btn btn-primary offset-md-1" onclick="$('#store').submit()">
+    <div class="m-1 mb-5 row justify-content-center">
+        <button type="button" class="btn btn-primary mx-1" onclick="$('#store').submit()">
             글등록
         </button>
-        <a class="btn btn-danger offset-md-1" href="{{route('board.index',['page'=>1])}}">목록보기</a>
+        <a class="btn btn-danger" href="{{route('board.index',['page'=>1])}}">목록보기</a>
     </div>
 @endsection
 @section('js')

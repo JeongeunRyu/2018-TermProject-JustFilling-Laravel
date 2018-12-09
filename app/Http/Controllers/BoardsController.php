@@ -41,11 +41,11 @@ class BoardsController extends Controller
                 case "writer":
                     $msgs =  User::select(['users.name','boards.id','boards.title','boards.hits','boards.created_at'])
                             ->join('boards', 'boards.user_id', '=', 'users.id')
-                            ->where('users.name', 'LIKE', "%$search%")->orderBy('id', 'desc')->paginate(6)->onEachSide(5);
+                            ->where('users.name', 'LIKE', "%$search%")->orderBy('id', 'desc')->paginate(5)->onEachSide(5);
                     break;
 
                 case "titlencontent":
-                    $msgs = Board::where('title','like',"%$search%")->orWhere('content','like',"%$search%")->orderBy('created_at', 'desc')->paginate(8);
+                    $msgs = Board::where('title','like',"%$search%")->orWhere('content','like',"%$search%")->orderBy('created_at', 'desc')->paginate(5);
                     break;
             }
 

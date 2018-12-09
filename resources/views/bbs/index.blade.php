@@ -33,7 +33,7 @@
 				@else
 				<td>{{$msg->user->name}}</td>
 				@endif
-				<td>{{$msg->created_at}}</td>
+				<td>{{substr($msg->created_at, 0, 10)}}</td>
 				<td>{{$msg->hits}}</td>
 			</tr>
 		@endforeach
@@ -53,24 +53,15 @@
 			<input class="form-control col-3" type="search" name="search" id="inputText" placeholder="Search" aria-label="Search">
 			<button class="btn btn-primary col-1" type="button" onclick="searchBtn({{$page}})">검색</button>
 		</div>
+		@if($search)
+			<button class="btn btn-primary justify-content-center"
+					onclick='location.href="{{route('board.index', ['page'=>$page])}}"'>목록보기</button>
+		@endif
 
 		<ul class="col pagination justify-content-end" style="margin-right: 13%">
 			{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}
 		</ul>
-		@if($search)
-			<button class="btn btn-primary" style="margin-right: 13%"
-					onclick='location.href="{{route('board.index', ['page'=>$page])}}"'>목록보기</button>
-		@endif
-
 	</div>
-
-
-
-
-
-
-
-
 @endsection
 @section('js')
 	<script>

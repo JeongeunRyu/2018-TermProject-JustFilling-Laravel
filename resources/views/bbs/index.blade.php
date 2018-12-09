@@ -32,18 +32,16 @@
 			</tr>
 		@endforeach
 	</table>
-
-
-]
-		<select class="custom-select" id="inputState" name="state">
+	<div class="form-row">
+		<select class="custom-select col-1" id="inputState" name="state">
 			<option value="title">제목</option>
 			<option value="content">글내용</option>
 			<option value="titlencontent">제목+글내용</option>
 			<option value="writer">작성자</option>
 		</select>
-		<input class="form-control mr-sm-2" type="search" name="search" id="inputText" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="searchBtn({{$page}})">검색</button>
-
+		<input class="form-control col-2" type="search" name="search" id="inputText" placeholder="Search" aria-label="Search">
+		<button class="btn btn-outline-success col-1" type="button" onclick="searchBtn({{$page}})">검색</button>
+	</div>
 
 	<input type="button" value="글쓰기" onclick="location.href='{{route('board.create')}}'" class="btn btn-danger">
 	{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}

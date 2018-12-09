@@ -38,7 +38,7 @@
 			</tr>
 		@endforeach
 	</table>
-	<input type="button" value="글쓰기" onclick="location.href='{{route('board.create')}}'" class="btn btn-secondary btn-block w-75 my-2 mx-auto">
+	<input type="button" value="글쓰기" onclick="location.href='{{route('board.create')}}'" class="btn btn-outline-secondary btn-block w-75 my-2 mx-auto">
 
 
 
@@ -57,6 +57,11 @@
 		<ul class="col pagination justify-content-end" style="margin-right: 13%">
 			{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}
 		</ul>
+		@if($search)
+			<button class="btn btn-primary" style="margin-right: 13%"
+					onclick='location.href="{{route('board.index', ['page'=>$page])}}"'>목록보기</button>
+		@endif
+
 	</div>
 
 

@@ -26,26 +26,26 @@ class BoardsController extends Controller
         $page = $request->page;
         $search = $request->search;
         $state = $request->state;
-        $msgs = Board::orderBy('created_at', 'desc')->paginate(3);
+        $msgs = Board::orderBy('created_at', 'desc')->paginate(8);
         if($search) {
             switch ($state) {
 
                 case "title":
-                    $msgs = Board::where('title','like',"%$search%")->orderBy('created_at', 'desc')->paginate(3);
+                    $msgs = Board::where('title','like',"%$search%")->orderBy('created_at', 'desc')->paginate(8);
                     break;
 
                 case "content":
-                    $msgs = Board::where('content','like',"%$search%")->orderBy('created_at', 'desc')->paginate(3);
+                    $msgs = Board::where('content','like',"%$search%")->orderBy('created_at', 'desc')->paginate(8);
                     break;
 
                 case "writer":
                     $msgs =  User::select(['users.name','boards.id','boards.title','boards.hits','boards.created_at'])
                             ->join('boards', 'boards.user_id', '=', 'users.id')
-                            ->where('users.name', 'LIKE', "%$search%")->orderBy('id', 'desc')->paginate(10)->onEachSide(5);
+                            ->where('users.name', 'LIKE', "%$search%")->orderBy('id', 'desc')->paginate(8)->onEachSide(5);
                     break;
 
                 case "titlencontent":
-                    $msgs = Board::where('title','like',"%$search%")->orWhere('content','like',"%$search%")->orderBy('created_at', 'desc')->paginate(3);
+                    $msgs = Board::where('title','like',"%$search%")->orWhere('content','like',"%$search%")->orderBy('created_at', 'desc')->paginate(8);
                     break;
             }
         }

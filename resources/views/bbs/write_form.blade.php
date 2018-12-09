@@ -114,5 +114,4 @@
 
 
     </script>
-    </script>
 @endsection

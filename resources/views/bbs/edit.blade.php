@@ -3,7 +3,11 @@
 	글수정
 @endsection
 @section('style')
+	<link href="/dist/dropzone.css" rel="stylesheet">
+	<script src="/dist/dropzone.js"></script>
+	<script src="/ckeditor/ckeditor.js"></script>
 	@include('components.style')
+
 @endsection
 @section('content')
 	<form action="{{route('board.update', ['board'=>$board->id, 'page'=>$page])}}" method="post">
@@ -19,8 +23,10 @@
 			</span>
 		</div>
 		<div class="form-group">
-		<label for="content">내용</label>
-			<textarea name="content" id="content" class="form-control" >{{$board->content}}</textarea>
+		<label>내용</label>
+			<textarea name="content"  id="editor1" class="form-control">
+
+				{{$board->content}}</textarea>
 			<span>
 				@if($errors->has('content'))
 					{{$errors->first('content')}}
@@ -30,4 +36,59 @@
 		<button class="btn btn-primary">수정하기</button>
 
 	</form>
+@endsection
+
+@section('js')
+	<script>
+        $("body").css("display", "none");
+        $("body").fadeIn(1000);
+
+        Dropzone.options.dropzone = {
+            addRemoveLinks: true,
+
+            success: function(file, response) {
+                alert(response.filename);
+                file.upload.id = response.id;
+                $("<input>", {type:'hidden', name:'attachments[]', value:response.id}).appendTo($('#store'));
+            },
+            error: function(file, response){
+                alert('error');
+                return false;
+            }
+        }
+
+
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace( 'editor1', {
+
+            'filebrowserUploadUrl': "{{URL::to('/')}}/ckeditor/upload.php"
+
+        });
+
+        CKEDITOR.on('dialogDefinition', function (ev) {
+
+            var dialogName = ev.data.name;
+
+            var dialog = ev.data.definition.dialog;
+
+            var dialogDefinition = ev.data.definition;
+
+            if (dialogName == 'image') {
+
+                dialog.on('show', function (obj) {
+
+                    this.selectPage('Upload'); //업로드텝으로 시작
+
+                });
+
+                dialogDefinition.removeContents('advanced'); // 자세히탭 제거
+                dialogDefinition.removeContents('Link'); // 링크탭 제거
+
+            }
+
+        });
+
+
+	</script>
 @endsection

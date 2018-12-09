@@ -6,7 +6,7 @@
 	@include('components.style')
 @endsection
 @section('content')
-	<table class="table">
+	<table class="table mx-auto w-75">
 		<tr>
 			<td>제목</td>
 			<td>{{$board->title}}</td>
@@ -46,7 +46,7 @@
 
 	<hr>
 
-	<div class="row">
+	<div class="row justify-content-center">
 		<button class="btn btn-primary"
 				onclick='location.href="{{route('board.index', ['page'=>$page])}}"'>목록보기</button>
 		@if(Auth::user()->id == $board->user_id)

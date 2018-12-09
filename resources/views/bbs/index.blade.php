@@ -6,10 +6,10 @@
 	@include('components.style')
 @endsection
 @section('content')
-		<div class="container my-5">
-			<h1 class="display-4">자유게시판</h1>
-			<p class="lead">마카롱에 관련된 내용을 자유롭게 공유해 주세요.</p>
-		</div>
+	<div class="container my-5">
+		<h1 class="display-4">자유게시판</h1>
+		<p class="lead">마카롱에 관련된 내용을 자유롭게 공유해 주세요.</p>
+	</div>
 	<table class="table mx-auto w-75">
 		<thead class="thead-light">
 		<tr>
@@ -38,22 +38,33 @@
 			</tr>
 		@endforeach
 	</table>
-		<div class="mx-auto" style="width: 1%">
-			{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}
+	<input type="button" value="글쓰기" onclick="location.href='{{route('board.create')}}'" class="btn btn-secondary btn-block w-75 my-2 mx-auto">
+
+
+
+	<div class="form-row mb-4">
+		<div class="col form-row" style="margin-left: 13%">
+			<select class="custom-select col-sm-3" id="inputState" name="state">
+				<option value="title">제목</option>
+				<option value="content">글내용</option>
+				<option value="titlencontent">제목+글내용</option>
+				<option value="writer">작성자</option>
+			</select>
+			<input class="form-control col-3" type="search" name="search" id="inputText" placeholder="Search" aria-label="Search">
+			<button class="btn btn-primary col-1" type="button" onclick="searchBtn({{$page}})">검색</button>
 		</div>
 
-	<div class="form-row">
-		<select class="custom-select col-1" id="inputState" name="state">
-			<option value="title">제목</option>
-			<option value="content">글내용</option>
-			<option value="titlencontent">제목+글내용</option>
-			<option value="writer">작성자</option>
-		</select>
-		<input class="form-control col-2" type="search" name="search" id="inputText" placeholder="Search" aria-label="Search">
-		<button class="btn btn-outline-success col-1" type="button" onclick="searchBtn({{$page}})">검색</button>
+		<ul class="col pagination justify-content-end" style="margin-right: 13%">
+			{{$msgs->appends(['search'=>$search,'state'=>$state])->links()}}
+		</ul>
 	</div>
 
-	<input type="button" value="글쓰기" onclick="location.href='{{route('board.create')}}'" class="btn btn-danger">
+
+
+
+
+
+
 
 @endsection
 @section('js')

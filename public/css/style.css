@@ -1,0 +1,103 @@
+::-moz-selection {
+    color: white;
+    background: #7A5C99;
+}
+
+::selection {
+    color: white;
+    background: #7A5C99;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:800');
+@import url('https://fonts.googleapis.com/css?family=Parisienne');
+
+.form-control{
+    border-radius: 1.5rem;
+}
+
+.title {
+    text-decoration: none;
+    margin-top: 16%;
+    text-align: center;
+    color: #fff;
+    font-size: 7em;
+    font-family: 'Parisienne', cursive;
+}
+.start-btn{
+    border-radius: 30px;
+    margin-left: 43.5%;
+}
+
+.navbar{
+    background-color: #918A99;
+}
+
+#home-container{
+    outline: none;
+    border: none;
+}
+.mcr-info{
+    margin-bottom: 1%;
+}
+
+.mcr_text{
+    font-family: 'Abril Fatface', cursive;
+    font-size: 5em;
+}
+
+.mcr_txt_sc{
+    margin-bottom: 2.5%;
+    font-family: 'Nanum Myeongjo',serif;
+    font-size: 1.2em;
+}
+.aboutmacaron{
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 44.5%;
+
+}
+.ab{
+    border-radius: 2rem;
+}
+.sp{
+    background-color: #6c6783;
+    color: white;
+}
+
+#index-container{
+    text-align: center;
+    background-color: #DBC5DB;
+    overflow: hidden;
+    font-family: 'Nanum Myeongjo', serif;
+
+}
+#mainlogo{
+    position:fixed;
+    margin-top: 15%;
+    margin-left:57%;
+}
+#mcr{
+    position:fixed;
+    margin-top: 15%;
+    margin-left: 86%;
+
+}
+#msg{
+
+    color: white;
+    position: fixed;
+    margin-top: 28%;
+    margin-left: 90%;
+    font-size: 0.6em;
+    letter-spacing: 1em;
+
+}
+
+#mainvideo {
+    position: fixed;
+    top: -15%;
+    left: 0px;
+    min-width : 100%;
+    z-index: -1;
+}

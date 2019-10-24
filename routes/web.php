@@ -22,7 +22,7 @@ Route::get('/redirect', 'SocialAuthGoogleController@redirect');
 Route::get('/callback', 'SocialAuthGoogleController@callback');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('board','BoardsController');
+Route::resource('/board','BoardsController');
 
 Route::resource('attachments','AttachmentsController')->only(['store','destroy']);
 

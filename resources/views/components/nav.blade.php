@@ -28,10 +28,10 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('홈') }}</a>
+                        <a class="nav-link" href="{{ route('home') }}">{{ __('홈') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('게시판') }}</a>
+                        <a class="nav-link" href="{{ route('board') }}">{{ __('게시판') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('갤러리') }}</a>
